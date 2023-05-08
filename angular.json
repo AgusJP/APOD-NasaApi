@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "apiNasaAngular"
+  "defaultProject": "apiNasaAngular",
+  "cli": {
+    "analytics": false
+  }
 }
