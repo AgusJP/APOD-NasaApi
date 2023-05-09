@@ -1,0 +1,30 @@
+.grid-container {
+  padding-top: 3.5rem;
+  width: 90%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 30%);
+  margin: 0 auto;
+  gap: 3rem;
+}
+
+.grid-item {
+  transition: transform 0.3s ease;
+}
+
+.grid-item:hover {
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 767px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}

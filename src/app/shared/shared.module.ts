@@ -5,7 +5,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 
 
-
 @NgModule({
   declarations: [
     BackButtonComponent,

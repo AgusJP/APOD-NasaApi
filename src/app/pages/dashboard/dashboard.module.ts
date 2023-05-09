@@ -4,6 +4,7 @@ import { ApodGalleryComponent } from 'src/app/components/apod-gallery/apod-galle
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ApodCardComponent } from 'src/app/components/apod-card/apod-card.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { ApodCardComponent } from 'src/app/components/apod-card/apod-card.compon
   imports: [
     CommonModule,
     DashboardRoutingModule,
+    RouterModule
   ],
   exports: [
     DashboardComponent

@@ -12,8 +12,12 @@ export class NasaAPODService {
 
   constructor(private http: HttpClient) { }
 
-  getApod(startDate: string, endDate: string): Observable<Apod> {
+  getApods(): Observable<Apod> {
     return this.http.get<Apod>(this.api_url);
+  }
+
+  getApodByDate(date:string) {
+    return this.http.get<Apod>(`https://api.nasa.gov/planetary/apod?date=${date}&api_key=iJ14ZUAK3liAuCtQV4EzTbWUlBesx1pGzMtL8btR`)
   }
   
 }
