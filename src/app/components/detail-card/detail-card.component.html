@@ -1,1 +1,13 @@
-<p>detail-card works!</p>
+<div class="content">
+  <div class="card-details">
+    <div class="container-details">
+        <img [src]="apodDetails?.url" alt="apodImage">
+    </div>
+    <div class="details">
+      <h3>{{apodDetails?.title}}</h3>
+      <p>{{apodDetails?.explanation}}</p>
+    </div>
+  </div>
+</div>
+
+<app-spinner *ngIf="isLoading"></app-spinner>

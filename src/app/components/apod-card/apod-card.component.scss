@@ -8,7 +8,7 @@
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  object-fit: cover; /* ajusta la imagen al tamaño del contenedor */
+  object-fit: cover; 
   top: 0;
   left: 0;
 }
@@ -56,4 +56,23 @@
   left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
+}
+
+@media screen and (max-width: 972px) {
+  .title {
+    font-size: 20px;
+  }
+  .button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .title {
+    font-size: 18px;
+  }
+  .button {
+    font-size: 12px;
+  }
 }

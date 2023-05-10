@@ -1,29 +1,30 @@
 .grid-container {
-  padding-top: 3.5rem;
   width: 90%;
-  height: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 30%);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 25px;
   margin: 0 auto;
-  gap: 3rem;
+  margin-top: 25px;
 }
 
 .grid-item {
+  max-height: 400px;
   transition: transform 0.3s ease;
+  margin-bottom: 25px;
 }
 
 .grid-item:hover {
   transform: scale(1.05);
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1114px) {
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 640px) {
   .grid-container {
     grid-template-columns: 1fr;
   }

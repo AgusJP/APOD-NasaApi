@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BackButtonComponent } from './back-button/back-button.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     SpinnerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
   ],
   exports: [
     BackButtonComponent,

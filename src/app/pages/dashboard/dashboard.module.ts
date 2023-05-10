@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ApodCardComponent } from 'src/app/components/apod-card/apod-card.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   exports: [
     DashboardComponent

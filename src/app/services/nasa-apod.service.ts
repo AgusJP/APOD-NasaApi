@@ -2,22 +2,23 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Apod } from '../interfaces/apod.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NasaAPODService {
 
-  api_url = "https://api.nasa.gov/planetary/apod?start_date=2023-04-03&end_date=2023-04-08&api_key=iJ14ZUAK3liAuCtQV4EzTbWUlBesx1pGzMtL8btR"
-
   constructor(private http: HttpClient) { }
 
-  getApods(): Observable<Apod> {
-    return this.http.get<Apod>(this.api_url);
+  getApods(start_date: string, end_date: string): Observable<Apod> {
+    return this.http.get<Apod>(`${environment.base_url}start_date=${start_date}&end_date=${end_date}&api_key=${environment.api_key}`);
   }
 
   getApodByDate(date:string) {
-    return this.http.get<Apod>(`https://api.nasa.gov/planetary/apod?date=${date}&api_key=iJ14ZUAK3liAuCtQV4EzTbWUlBesx1pGzMtL8btR`)
+    //NOTA: Aqui si la petición la meto en un observable al cargar el servicio, podria buscar por fecha
+    // y no tener que sobrecargar la api 
+    return this.http.get<Apod>(`${environment.base_url}date=${date}&api_key=${environment.api_key}`)
   }
   
 }

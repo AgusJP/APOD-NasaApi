@@ -1,9 +1,9 @@
 <div class="apod-card">
-  <img class="card-img" [src]="apod.url" alt="apodImage">
+  <img class="card-img" [src]="apod?.url" alt="apodImage">
   <div class="card-content">
-    <span class="date">{{apod.date}}</span>
-    <h2 class="title">{{apod.title}}</h2>
-    <button class="button" [routerLink]="['/details/apod']" [queryParams]="{date: apod.date}">More Details</button>
+    <span class="date">{{apod?.date}}</span>
+    <h2 class="title">{{apod?.title}}</h2>
+    <button class="button" [routerLink]="['/details/apod']" [queryParams]="{date: apod?.date}">More Details</button>
   </div>  
 </div>
 
