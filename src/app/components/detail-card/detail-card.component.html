@@ -1,7 +1,10 @@
 <div class="content">
   <div class="card-details">
     <div class="container-details">
+      <div>
         <img [src]="apodDetails?.url" alt="apodImage">
+        <app-back-button></app-back-button>
+      </div>   
     </div>
     <div class="details">
       <h3>{{apodDetails?.title}}</h3>
@@ -9,5 +12,4 @@
     </div>
   </div>
 </div>
-
 <app-spinner *ngIf="isLoading"></app-spinner>

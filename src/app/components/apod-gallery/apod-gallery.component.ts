@@ -30,7 +30,7 @@ export class ApodGalleryComponent implements OnInit {
       this.isLoading = false
       this.apodsData = apods 
     },(error) => {
-      console.log(error)
+      console.log(error.error.error.code)
       this.isLoading = false
     })
   }

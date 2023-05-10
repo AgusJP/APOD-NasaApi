@@ -4,13 +4,15 @@ import { BackButtonComponent } from './back-button/back-button.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { RouterModule } from '@angular/router';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
   declarations: [
     BackButtonComponent,
     NavbarComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { RouterModule } from '@angular/router';
   exports: [
     BackButtonComponent,
     NavbarComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }

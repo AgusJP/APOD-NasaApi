@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Apod } from '../interfaces/apod.interface';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Apod } from '../interfaces/apod.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NasaAPODService {
+
+  apodsData = new BehaviorSubject<Apod>(null);
+  apodsData$ = of(this.apodsData)
 
   constructor(private http: HttpClient) { }
 

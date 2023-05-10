@@ -34,7 +34,7 @@ export class DetailCardComponent implements OnInit {
       this.apodDetails = apod
     },(error) => {
       this.isLoading = false;
-      console.log(error)
+      console.log(error.error.error.code)
     })
   }
 

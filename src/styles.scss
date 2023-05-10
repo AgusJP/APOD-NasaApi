@@ -1,14 +1,28 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-image: url("./assets/background.jpg");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 100vh;
+  background-image: url("./assets/background.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  padding-bottom: 120px;
+  min-height: 100vh;
+}
+
+@media screen and (max-width: 972px) {
+  body {
+    padding-bottom: 150px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  body {
+    padding-bottom: 250px;
+  }
 }
