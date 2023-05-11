@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { take, tap } from 'rxjs/operators';
 import { Apod } from 'src/app/interfaces/apod.interface';
 import { NasaAPODService } from 'src/app/services/nasa-apod.service';
 import { getRangeDate } from 'src/app/utilities/date.utilities';
+
 
 @Component({
   selector: 'app-apod-gallery',
@@ -11,28 +13,36 @@ import { getRangeDate } from 'src/app/utilities/date.utilities';
 })
 export class ApodGalleryComponent implements OnInit{
 
-  apodsData: Apod;
+  apodsData:Apod;
   apodsDataSubscription: Subscription;
   isLoading: boolean = false;
   showToast: boolean = false;
 
-  constructor(private apodService: NasaAPODService) { }
+  constructor(private apodService: NasaAPODService) {}
 
   ngOnInit(): void {
     this.getApodsData()
+
+    this.apodsDataSubscription = this.apodService.Apods
+    .subscribe((apods) => {
+      this.apodsData = apods
+      this.isLoading = false
+    })
   }
   
   getApodsData() {
+    this.isLoading = true
     const { start_date, end_date } = getRangeDate()
-    this.isLoading = true;
 
-    if (!this.apodService.apodsData.getValue()) {
-      this.apodsDataSubscription = this.apodService.firstTimeGetApods(start_date, end_date)
-      .subscribe(apods => {
-        this.isLoading = false
+    if (!this.apodService.apodsData$.getValue()) {
+      this.apodService.firstTimeGetApods(start_date, end_date)
+      .subscribe(apods => {   
         this.apodsData = apods
         this.apodService.setApods(this.apodsData)
-        console.log("Sigo en el if")
+        this.isLoading = true
+        setTimeout(() => {
+          this.isLoading = false
+        }, 250);
       },
       (error) => {
         this.isLoading = false
@@ -41,13 +51,6 @@ export class ApodGalleryComponent implements OnInit{
           this.showToast = false
         }, 2500);
       })  
-    } else {
-      this.apodService.getApods().subscribe((apods) => {
-        this.isLoading = false
-        this.apodsData = apods.getValue()
-        console.log(apods.getValue())
-      })
-      console.log("He llegado al else")
     }
   }
 

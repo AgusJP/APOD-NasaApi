@@ -11,7 +11,7 @@ import { Apod } from '../interfaces/apod.interface';
 })
 export class NasaAPODService {
 
-  apodsData: BehaviorSubject<Apod> = new BehaviorSubject<Apod>(null);
+  apodsData$: BehaviorSubject<Apod> = new BehaviorSubject<Apod>(null);
 
   constructor(private http: HttpClient) {}
 
@@ -20,22 +20,18 @@ export class NasaAPODService {
   }
 
   getApodByDate(date:string) {
-    return this.apodsData.pipe(
+    return this.apodsData$.pipe(
       switchMap(data => from<any>(data)),
       find((apod:Apod) => apod.date == date)
     )
-    //NOTA: Aqui si la petición la meto en un observable al cargar el servicio, podria buscar por fecha
-    // y no tener que sobrecargar la api 
-    return this.http.get<Apod>(`${environment.base_url}date=${date}&api_key=${environment.api_key}`)
   }
 
-  getApods() {
-    return of(this.apodsData)
+  get Apods() {
+    return this.apodsData$.asObservable()
   }
 
   setApods(data:Apod) {
-    console.log(data)
-    this.apodsData.next(data)
+    this.apodsData$.next(data)
   }
   
 }
