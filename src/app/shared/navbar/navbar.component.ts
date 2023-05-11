@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NasaAPODService } from 'src/app/services/nasa-apod.service';
+import { getRangeDate } from 'src/app/utilities/date.utilities';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  inputDate: string = "";
+  
+  constructor(private apodService: NasaAPODService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  getInputDateValue() {
+    const { start_date, end_date } = getRangeDate(this.inputDate)
+
+    this.apodService.firstTimeGetApods(start_date, end_date).subscribe((data) => {
+      this.apodService.setApods(data)
+    })
   }
 
 }

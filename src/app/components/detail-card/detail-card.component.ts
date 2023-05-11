@@ -15,6 +15,7 @@ export class DetailCardComponent implements OnInit {
   apodDetails: Apod;
   apodDetailsSubscription: Subscription;
   isLoading: boolean = false;
+  showToast: boolean = false;
 
   constructor(private route: ActivatedRoute, private apodService: NasaAPODService) { }
 
@@ -28,19 +29,27 @@ export class DetailCardComponent implements OnInit {
   
   getApodDetails() {
     this.isLoading = true;
+
     this.apodDetailsSubscription = this.apodService.getApodByDate(this.date)
     .subscribe(apod => {
+      console.log(apod)
       this.isLoading = false;
       this.apodDetails = apod
-    },(error) => {
+    },
+    (error) => {
       this.isLoading = false;
-      console.log(error.error.error.code)
+      this.showToast = true
+      setTimeout(() => {
+        this.showToast = false
+      }, 2500);
     })
   }
 
   ngOnDestroy(): void {
     //Cancelar la suscripción al destruir el componente
-    this.apodDetailsSubscription.unsubscribe();
+    if (this.apodDetailsSubscription) {
+      this.apodDetailsSubscription.unsubscribe();
+    }  
   }
 
 }

@@ -5,6 +5,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
+import { ToastComponent } from './toast/toast.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,17 +14,20 @@ import { FooterComponent } from './footer/footer.component';
     BackButtonComponent,
     NavbarComponent,
     SpinnerComponent,
-    FooterComponent
+    FooterComponent,
+    ToastComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule
   ],
   exports: [
     BackButtonComponent,
     NavbarComponent,
     SpinnerComponent,
-    FooterComponent
+    FooterComponent,
+    ToastComponent
   ]
 })
 export class SharedModule { }

@@ -9,8 +9,8 @@
       <ul class="navbar-nav me-auto">
       </ul>
       <form class="d-flex">
-        <input class="form-control me-sm-2" type="date" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        <input [(ngModel)]="inputDate" name="inputDate" class="form-control me-sm-2" type="date" placeholder="Search">
+        <button (click)="getInputDateValue()" class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
   </div>
