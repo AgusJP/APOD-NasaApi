@@ -17,6 +17,7 @@ export class ApodGalleryComponent implements OnInit{
   apodsDataSubscription: Subscription;
   isLoading: boolean = false;
   showToast: boolean = false;
+  toastMessage: String = "";
 
   constructor(private apodService: NasaAPODService) {}
 
@@ -47,6 +48,7 @@ export class ApodGalleryComponent implements OnInit{
       (error) => {
         this.isLoading = false
         this.showToast = true
+        this.toastMessage = error.error.error.message
         setTimeout(() => {
           this.showToast = false
         }, 2500);

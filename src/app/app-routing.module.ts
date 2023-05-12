@@ -15,7 +15,7 @@ const routes: Routes = [
   { 
     path: 'details/apod',
     loadChildren: () => import('./pages/details/details.module').then((m) => m.DetailsModule)
-  }
+  },
 ];
 
 @NgModule({

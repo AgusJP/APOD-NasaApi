@@ -1,4 +1,4 @@
-<app-toast *ngIf="showToast"></app-toast>
+<app-toast [toastMessage]="toastMessage" *ngIf="showToast"></app-toast>
 <div class="grid-container">
   <ng-container *ngFor="let apod of apodsData; let i = index">
     <app-apod-card class="grid-item" [apod]="apod"></app-apod-card>

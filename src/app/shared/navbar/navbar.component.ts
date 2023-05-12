@@ -11,6 +11,8 @@ import { getRangeDate } from 'src/app/utilities/date.utilities';
 export class NavbarComponent implements OnInit {
 
   inputDate: string = "";
+  toastMessage: String = "";
+  showToast: boolean = false;
   
   constructor(private apodService: NasaAPODService) { }
 
@@ -21,6 +23,18 @@ export class NavbarComponent implements OnInit {
 
     this.apodService.firstTimeGetApods(start_date, end_date).subscribe((data) => {
       this.apodService.setApods(data)
+    },
+    (error) => {
+      console.log(error)
+      this.showToast = true
+      if (error.error?.error) {
+        this.toastMessage = error.error.error.message
+      } else {
+        this.toastMessage = error.error.msg
+      }  
+        setTimeout(() => {
+          this.showToast = false
+        }, 2500);
     })
   }
 
