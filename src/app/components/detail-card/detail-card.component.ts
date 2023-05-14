@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Apod } from 'src/app/interfaces/apod.interface';
-import { NasaAPODService } from 'src/app/services/nasa-apod.service';
+import { NasaAPODService } from 'src/app/services/nasaApodService/nasa-apod.service';
 
 @Component({
   selector: 'app-detail-card',

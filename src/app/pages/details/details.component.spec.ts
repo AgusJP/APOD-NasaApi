@@ -19,7 +19,7 @@ describe('DetailsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create DetailsPage', () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ApodGalleryComponent } from './apod-gallery.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ApodGalleryComponent', () => {
   let component: ApodGalleryComponent;
@@ -8,7 +9,8 @@ describe('ApodGalleryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ApodGalleryComponent ]
+      declarations: [ ApodGalleryComponent ],
+      imports: [ HttpClientTestingModule ]
     })
     .compileComponents();
   });
@@ -19,7 +21,7 @@ describe('ApodGalleryComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create ApodGalleryComponent', () => {
     expect(component).toBeTruthy();
   });
 });

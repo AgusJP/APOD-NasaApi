@@ -19,7 +19,20 @@ describe('SpinnerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+
+  it('should create SpinnerComponent', () => {
     expect(component).toBeTruthy();
   });
+
+  
+  it('should display the spinner with correct structure', () => {
+    const spinnerElement = fixture.nativeElement.querySelector('.moon');
+    const imageElement = spinnerElement.querySelector('img');
+    const listItems = spinnerElement.querySelectorAll('ul li');
+
+    expect(spinnerElement).toBeTruthy();
+    expect(imageElement).toBeTruthy();
+    expect(listItems.length).toBe(7);
+  });
+
 });

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NasaAPODService } from 'src/app/services/nasa-apod.service';
-import { getRangeDate } from 'src/app/utilities/date.utilities';
-
+import { NasaAPODService } from 'src/app/services/nasaApodService/nasa-apod.service';
+import { DateService } from './../../services/dateService/date.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,12 +13,12 @@ export class NavbarComponent implements OnInit {
   toastMessage: String = "";
   showToast: boolean = false;
   
-  constructor(private apodService: NasaAPODService) { }
+  constructor(private apodService: NasaAPODService, private dateService: DateService) { }
 
   ngOnInit(): void {}
 
   getInputDateValue() {
-    const { start_date, end_date } = getRangeDate(this.inputDate)
+    const { start_date, end_date } = this.dateService.getRangeDate(this.inputDate)
 
     this.apodService.firstTimeGetApods(start_date, end_date).subscribe((data) => {
       this.apodService.setApods(data)

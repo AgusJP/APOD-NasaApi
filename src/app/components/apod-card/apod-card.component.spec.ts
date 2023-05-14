@@ -19,7 +19,7 @@ describe('ApodCardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create ApodCardComponent', () => {
     expect(component).toBeTruthy();
   });
 });

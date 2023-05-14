@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ToastComponent implements OnInit {
 
-  @Input() toastMessage: Input;
+  @Input("toastMessage") toastMessage: Input;
 
   constructor() { }
 

@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { take, tap } from 'rxjs/operators';
+import { NasaAPODService } from 'src/app/services/nasaApodService/nasa-apod.service';
+import { DateService } from './../../services/dateService/date.service';
 import { Apod } from 'src/app/interfaces/apod.interface';
-import { NasaAPODService } from 'src/app/services/nasa-apod.service';
-import { getRangeDate } from 'src/app/utilities/date.utilities';
-
 
 @Component({
   selector: 'app-apod-gallery',
@@ -13,19 +11,19 @@ import { getRangeDate } from 'src/app/utilities/date.utilities';
 })
 export class ApodGalleryComponent implements OnInit{
 
-  apodsData:Apod;
+  apodsData: Apod[];
   apodsDataSubscription: Subscription;
   isLoading: boolean = false;
   showToast: boolean = false;
   toastMessage: String = "";
 
-  constructor(private apodService: NasaAPODService) {}
+  constructor(private apodService: NasaAPODService, private dateService: DateService) {}
 
   ngOnInit(): void {
     this.getApodsData()
 
     this.apodsDataSubscription = this.apodService.Apods
-    .subscribe((apods) => {
+    .subscribe((apods: Apod[]) => {
       this.apodsData = apods
       this.isLoading = false
     })
@@ -33,11 +31,11 @@ export class ApodGalleryComponent implements OnInit{
   
   getApodsData() {
     this.isLoading = true
-    const { start_date, end_date } = getRangeDate()
+    const { start_date, end_date } = this.dateService.getRangeDate()
 
     if (!this.apodService.apodsData$.getValue()) {
       this.apodService.firstTimeGetApods(start_date, end_date)
-      .subscribe(apods => {   
+      .subscribe((apods: Apod[]) => {   
         this.apodsData = apods
         this.apodService.setApods(this.apodsData)
         this.isLoading = true
