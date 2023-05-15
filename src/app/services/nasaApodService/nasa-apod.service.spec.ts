@@ -1,13 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { NasaAPODService } from './nasa-apod.service';
 import { HttpClient } from '@angular/common/http';
-import { from, of } from 'rxjs';
+import { of } from 'rxjs';
 import { Apod } from 'src/app/interfaces/apod.interface';
+import { mockResponse } from 'src/app/testing/mockResponse';
 
 describe('Testing NasaAPODService', () => {
   let service: NasaAPODService;
   let httpClientSpy: jasmine.SpyObj<HttpClient>;
-  let mockResponse: Apod[];
+  let dataResponse: Apod[];
 
   beforeEach(() => {
     const spy = jasmine.createSpyObj('HttpClient', ['get']);
@@ -17,24 +18,7 @@ describe('Testing NasaAPODService', () => {
       });
     service = TestBed.inject(NasaAPODService);
     httpClientSpy = TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
-    mockResponse =  [{
-      "date": "2023-05-14",
-      "explanation": "What would it be like to fly free in space?",
-      "hdurl": "https://apod.nasa.gov/apod/image/2305/freeflyer_nasa_3000.jpg",
-      "media_type": "image",
-      "service_version": "v1",
-      "title": "To Fly Free in Space",
-      "url": "https://apod.nasa.gov/apod/image/2305/freeflyer_nasa_960.jpg"
-    },
-    {
-      "date": "2023-05-13",
-      "explanation": "Our fair planet sports a curved...",
-      "hdurl": "https://apod.nasa.gov/apod/image/2305/AS17-152-23420_Ord.jpg",
-      "media_type": "image",
-      "service_version": "v1",
-      "title": "Apollo 17: The Crescent Earth",
-      "url": "https://apod.nasa.gov/apod/image/2305/AS17-152-23420_Ord1024c.jpg"
-    }]
+    dataResponse =  mockResponse
   });
   
 
